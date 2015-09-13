@@ -1,7 +1,3 @@
-A <- matrix(c(1, 1, 1, 1, 0, -1, 1, 2, 0 , 1), byrow=TRUE, nrow=2)
-b <- c(5, 6)
-
-
 #' Find Basic Feasible Solutions
 #' 
 #' @export
