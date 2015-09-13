@@ -12,3 +12,7 @@
 *.out
 *.toc
 *.tex.backup
+
+.RData
+.Rout
+
