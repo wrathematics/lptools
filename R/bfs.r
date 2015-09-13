@@ -66,13 +66,11 @@ find.ep <- function(bfs)
     Binv_b <- bfs$bfs[[ind]]
     
     inds <- bfs$indices[[ind]]
-    i <- inds[1]
-    j <- inds[2]
     
-    if (all(Binv_b > 0))
+    if (all(Binv_b >= 0))
     {
       sol <- rep(0, bfs$n)
-      sol[c(i, j)] <- Binv_b
+      sol[inds] <- Binv_b
       
       eps[[epsind]] <- sol
       epsind <- epsind + 1L
