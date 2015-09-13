@@ -1,5 +1,13 @@
 #' Find Basic Feasible Solutions
 #' 
+#' @param A
+#' Coefficient matrix of the convex set.
+#' @param b
+#' Right hand side.
+#' 
+#' @return
+#' A 'bfs' object.
+#' 
 #' @export
 find.bfs <- function(A, b)
 {
@@ -36,6 +44,14 @@ find.bfs <- function(A, b)
 
 
 #' Find Extreme Points
+#'
+#' Find extreme points.
+#' 
+#' @param bfs
+#' A bfs object, returned from \code{find.bfs()}.
+#' 
+#' @return 
+#' An 'ep' class object.
 #' 
 #' @export
 find.ep <- function(bfs)

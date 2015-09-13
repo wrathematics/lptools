@@ -6,6 +6,14 @@
 \usage{
 find.bfs(A, b)
 }
+\arguments{
+\item{A}{Coefficient matrix of the convex set.}
+
+\item{b}{Right hand side.}
+}
+\value{
+A 'bfs' object.
+}
 \description{
 Find Basic Feasible Solutions
 }

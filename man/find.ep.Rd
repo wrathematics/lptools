@@ -6,7 +6,13 @@
 \usage{
 find.ep(bfs)
 }
+\arguments{
+\item{bfs}{A bfs object, returned from \code{find.bfs()}.}
+}
+\value{
+An 'ep' class object.
+}
 \description{
-Find Extreme Points
+Find extreme points.
 }
 

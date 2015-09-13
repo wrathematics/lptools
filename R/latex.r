@@ -1,25 +1,32 @@
+#' LaTeX printing
+#' 
+#' Displaying objects of the appropriate type, typeset in
+#' LaTeX.  For use with knitr/sweave.
+#' 
+#' @param object
+#' Object to print in LaTeX.
+#' @param ...
+#' Additional arguments.
+#' @param digits
+#' Number of rounding digits
+#' 
+#' @rdname latex
+#' @name latex
 #' @export
 latex <- function(object, ...) UseMethod("latex")
 
 
 
-#' Display a Matrix
-#' 
-#' Display a matrix in LaTeX.  For use with knitr/sweave.
-#' 
-#' @param A
-#' Matrix to display.
-#' @param digits
-#' Number of rounding digits.
 #' @param asTranspose
 #' Display as the transpose?
 #' 
 #' @examples
 #' x <- matrix(1:25, 5)
-#' display(x)
+#' latex(x)
 #' 
+#' @rdname latex
 #' @export
-latex.matrix <- function(object, digits=3, asTranspose=FALSE)
+latex.matrix <- function(object, digits=3, asTranspose=FALSE, ...)
 {
   dispname <- deparse(substitute(object))
   if (asTranspose)
@@ -45,17 +52,9 @@ latex.matrix <- function(object, digits=3, asTranspose=FALSE)
 
 
 
-#' Display Basic Feasible Solutions
-#' 
-#' Display a bfs in LaTeX.  For use with knitr/sweave.
-#' 
-#' @param object
-#' A 'bfs' object.
-#' @param digits
-#' Number of rounding digits.
-#' 
+#' @rdname latex
 #' @export
-latex.bfs <- function(object, digits=3)
+latex.bfs <- function(object, digits=3, ...)
 {
   cat("\\begin{align*}\n")
   
@@ -78,15 +77,9 @@ latex.bfs <- function(object, digits=3)
 
 
 
-#' Display Extreme Points
-#' 
-#' @param object
-#' An 'ep' object.
-#' @param digits
-#' Number of rounding digits.
-#' 
+#' @rdname latex
 #' @export
-latex.ep <- function(object, digits=3)
+latex.ep <- function(object, digits=3, ...)
 {
   cat("\\begin{align*}\n")
   
