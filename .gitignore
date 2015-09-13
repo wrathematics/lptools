@@ -1,0 +1,14 @@
+*.o
+*.lo
+*.so
+*.log
+*.status
+*~
+*.swp
+
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.tex.backup
