@@ -11,29 +11,28 @@
 #' @export
 find.bfs <- function(A, b)
 {
-  ind <- 0
-  len.out <- choose(ncol(A), nrow(A))
+  combs <- combn(ncol(A), nrow(A))
+  len.out <- ncol(combs)
+  
   bfs <- vector(mode="list", length=len.out)
   indices <- vector(mode="list", length=len.out)
   
-  for (i in 1:(ncol(A)-1))
+  for (ind in 1:len.out)
   {
-    for (j in (i+1):ncol(A))
+    columns <- combs[, ind]
+    
+    B <- A[, columns]
+    
+    if (det(B) == 0)
     {
-      ind <- ind + 1
-      
-      B <- A[, c(i, j)]
-      if (det(B) == 0)
-      {
-        bfs[[ind]] <- "Not defined"
-        indices[[ind]] <- c(i, j)
-        next
-      }
-      
-      # B^{-1}b
-      bfs[[ind]] <- solve(B) %*% b
-      indices[[ind]] <- c(i, j)
+      bfs[[ind]] <- "Not defined"
+      indices[[ind]] <- columns
+      next
     }
+    
+    # B^{-1}b
+    bfs[[ind]] <- solve(B) %*% b
+    indices[[ind]] <- columns
   }
   
   ret <- list(bfs=bfs, indices=indices, n=ncol(A))
