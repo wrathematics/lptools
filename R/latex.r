@@ -11,25 +11,33 @@ latex <- function(object, ...) UseMethod("latex")
 #' Matrix to display.
 #' @param digits
 #' Number of rounding digits.
+#' @param asTranspose
+#' Display as the transpose?
 #' 
 #' @examples
 #' x <- matrix(1:25, 5)
 #' display(x)
 #' 
 #' @export
-latex.matrix <- function(object, digits=3)
+latex.matrix <- function(object, digits=3, asTranspose=FALSE)
 {
   dispname <- deparse(substitute(object))
+  if (asTranspose)
+    object <- t(object)
   
   cat("\\begin{align*}")
+  
   cols <- paste(rep("r", ncol(object)), collapse="")
   cat(paste0(dispname, " &= \\left[\\begin{array}{", cols, "}\n"))
+  
   for (row in 1:nrow(object))
   {
     printrow <- paste(round(object[row, ], digits=digits), "&", collapse="")
     cat(substr(printrow, start=1, stop=nchar(printrow)-2), "\\\\\n")
   }
   cat("\\end{array}\\right]")
+  if (asTranspose)
+    cat("^T")
   cat("\\end{align*}")
   
   invisible()
