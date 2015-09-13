@@ -63,10 +63,8 @@ latex.bfs <- function(object, digits=3, ...)
     Binv_b <- object$bfs[[ind]]
     
     inds <- object$indices[[ind]]
-    i <- inds[1]
-    j <- inds[2]
     
-    cat(paste0("B^{-1}b = [a_", i, ", a_", j, "]^{-1}b &= "))
+    cat(paste0("B^{-1}b = [", paste0("a_", inds, collapse=", "), "]^{-1}b &= "))
     cat(paste0("[", paste(round(Binv_b, digits=digits), collapse=","), "]^T\\\\\n"))
   }
   
