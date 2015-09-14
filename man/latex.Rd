@@ -5,11 +5,14 @@
 \alias{latex.bfs}
 \alias{latex.ep}
 \alias{latex.matrix}
+\alias{latex.numeric}
 \title{LaTeX printing}
 \usage{
 latex(object, ...)
 
 \method{latex}{matrix}(object, digits = 3, asTranspose = FALSE, ...)
+
+\method{latex}{numeric}(object, digits = 3, asTranspose = FALSE, ...)
 
 \method{latex}{bfs}(object, digits = 3, ...)
 

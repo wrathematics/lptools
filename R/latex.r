@@ -54,6 +54,16 @@ latex.matrix <- function(object, digits=3, asTranspose=FALSE, ...)
 
 #' @rdname latex
 #' @export
+latex.numeric <- function(object, digits=3, asTranspose=FALSE, ...)
+{
+  object <- as.matrix(object)
+  latex.matrix(object=object, digits=digits, asTranspose=asTranspose)
+}
+
+
+
+#' @rdname latex
+#' @export
 latex.bfs <- function(object, digits=3, ...)
 {
   cat("\\begin{align*}\n")
