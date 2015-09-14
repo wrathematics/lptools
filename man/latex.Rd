@@ -8,24 +8,34 @@
 \alias{latex.numeric}
 \title{LaTeX printing}
 \usage{
-latex(object, ...)
+latex(object, inline = FALSE, ...)
 
-\method{latex}{matrix}(object, digits = 3, asTranspose = FALSE, ...)
+\method{latex}{matrix}(object, inline = FALSE, digits = 3,
+  showName = TRUE, asTranspose = FALSE, ..., dispname)
 
-\method{latex}{numeric}(object, digits = 3, asTranspose = FALSE, ...)
+\method{latex}{numeric}(object, inline = FALSE, digits = 3,
+  showName = TRUE, asTranspose = FALSE, ...)
 
-\method{latex}{bfs}(object, digits = 3, ...)
+\method{latex}{bfs}(object, inline = FALSE, digits = 3, ...)
 
-\method{latex}{ep}(object, digits = 3, ...)
+\method{latex}{ep}(object, inline = FALSE, digits = 3, ...)
 }
 \arguments{
 \item{object}{Object to print in LaTeX.}
+
+\item{inline}{Logical; should the latex be written inline (TRUE), i.e. you have started
+math mode yourself, or not inline (FALSE), i.e. an \code{align*}
+environment is set up for you.}
 
 \item{...}{Additional arguments.}
 
 \item{digits}{Number of rounding digits}
 
+\item{showName}{Logical; should the name of the matrix be printed?}
+
 \item{asTranspose}{Display as the transpose?}
+
+\item{dispname}{Optional display name.}
 }
 \description{
 Displaying objects of the appropriate type, typeset in
