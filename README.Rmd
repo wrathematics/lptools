@@ -1,0 +1,56 @@
+```{r, eval=TRUE, echo=FALSE, results="asis"}
+cat("<!-- Warning! Do not directly edit this file; see README.Rmd -->\n")
+```
+# lptools 
+
+* **Version:** 0.1
+* **Status:** [![Build Status](https://travis-ci.org/wrathematics/lptools.png)](https://travis-ci.org/wrathematics/lptools)
+* **License:** [![License](http://img.shields.io/badge/license-BSD%202--Clause-orange.svg?style=flat)](http://opensource.org/licenses/BSD-2-Clause)
+* **Author:** Drew Schmidt
+
+
+Linear programming tools to make doing my homework easier.
+
+
+## Example
+
+Say we have the system inspired from a linear program:
+
+```{r, message=FALSE}
+library(lptools)
+
+A <- matrix(c(1, 1, 1, 1, 0, -1, 1, 2, 0 , 1), byrow=TRUE, nrow=2)
+b <- c(5, 6)
+```
+
+TODO
+
+```{r}
+latex(A)
+```
+
+TODO
+
+```{r}
+bfs <- find.bfs(A, b)
+latex(bfs)
+```
+
+TODO
+
+```{r}
+ep <- find.ep(bfs)
+latex(ep)
+```
+
+
+
+## Matrix Printing
+
+There are numerous options for displaying matrices in LaTeX.  By default, the matrix will print inside of an `align*` environment and have its R name preceeding it.  However, we can print "inline" (without the automatic math mode), without showing the object name, or even print the transpose instead:
+
+```{r, eval=TRUE}
+x <- matrix(1:30, nrow=10)
+latex(x, inline=TRUE, asTranspose=TRUE, showName=FALSE)
+```
+
