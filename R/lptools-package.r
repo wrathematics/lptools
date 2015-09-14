@@ -2,6 +2,8 @@
 #' 
 #' TODO
 #' 
+#' @importFrom utils combn
+#' 
 #' @name lptools-package
 #' @docType package
 #' @author Drew Schmidt \email{wrathematics AT gmail.com}
