@@ -99,7 +99,11 @@ optimize_lp <- function(z, ep, optfun)
   op <- optfun(vals)
   at <- which(op == vals)
   
-  list(optimum=op, soln=ep[[at]])
+  
+  optimum <- list(optimum=op, soln=ep[[at]])
+  class(optimum) <- "lp_solution"
+  
+  optimum
 }
 
 
@@ -120,7 +124,10 @@ optimize_lp <- function(z, ep, optfun)
 #' @export
 minimize <- function(z, ep)
 {
-  optimize_lp(z=z, ep=ep, optfun=min)
+  optimum <- optimize_lp(z=z, ep=ep, optfun=min)
+  optimum$type <- "minimum"
+  
+  optimum
 }
 
 
@@ -129,7 +136,10 @@ minimize <- function(z, ep)
 #' @export
 maximize <- function(z, ep)
 {
-  optimize_lp(z=z, ep=ep, optfun=max)
+  optimum <- optimize_lp(z=z, ep=ep, optfun=max)
+  optimum$type <- "maximum"
+  
+  optimum
 }
 
 

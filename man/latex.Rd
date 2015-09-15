@@ -4,6 +4,7 @@
 \alias{latex}
 \alias{latex.bfs}
 \alias{latex.ep}
+\alias{latex.lp_solution}
 \alias{latex.matrix}
 \alias{latex.numeric}
 \title{LaTeX printing}
@@ -19,6 +20,8 @@ latex(object, inline = FALSE, ...)
 \method{latex}{bfs}(object, inline = FALSE, digits = 3, ...)
 
 \method{latex}{ep}(object, inline = FALSE, digits = 3, ...)
+
+\method{latex}{lp_solution}(object, ...)
 }
 \arguments{
 \item{object}{Object to print in LaTeX.}
