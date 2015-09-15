@@ -17,7 +17,7 @@
 #' @rdname latex
 #' @name latex
 #' @export
-latex <- function(object, inline=FALSE, ...) UseMethod("latex")
+latex <- function(object, ...) UseMethod("latex")
 
 
 

@@ -9,7 +9,7 @@
 \alias{latex.numeric}
 \title{LaTeX printing}
 \usage{
-latex(object, inline = FALSE, ...)
+latex(object, ...)
 
 \method{latex}{matrix}(object, inline = FALSE, digits = 3,
   showName = TRUE, asTranspose = FALSE, ..., dispname)
@@ -26,11 +26,11 @@ latex(object, inline = FALSE, ...)
 \arguments{
 \item{object}{Object to print in LaTeX.}
 
+\item{...}{Additional arguments.}
+
 \item{inline}{Logical; should the latex be written inline (TRUE), i.e. you have started
 math mode yourself, or not inline (FALSE), i.e. an \code{align*}
 environment is set up for you.}
-
-\item{...}{Additional arguments.}
 
 \item{digits}{Number of rounding digits}
 
