@@ -21,7 +21,7 @@ latex(object, inline = FALSE, ...)
 
 \method{latex}{ep}(object, inline = FALSE, digits = 3, ...)
 
-\method{latex}{lp_solution}(object, ...)
+\method{latex}{lp_solution}(object, digits = 3, ...)
 }
 \arguments{
 \item{object}{Object to print in LaTeX.}
