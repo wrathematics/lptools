@@ -82,3 +82,54 @@ find.ep <- function(bfs)
 }
 
 
+
+optimize_lp <- function(z, ep, optfun)
+{
+  if (class(ep) != "ep")
+    stop("Argument 'ep' must be of class 'ep'")
+  
+  if (length(z) != length(ep[[1]]))
+    stop("Objective function coefficients 'z' must match the number of coefficients of the ep's")
+  
+  if (class(optfun) != "function")
+    stop("Argument 'optfun' must be a function of a single variable")
+  
+  zfun <- function(x) crossprod(z, x)
+  vals <- sapply(ep, zfun)
+  op <- optfun(vals)
+  at <- which(op == vals)
+  
+  list(optimum=op, soln=ep[[at]])
+}
+
+
+
+#' Optimize Linear Programming Problem
+#' 
+#' Given a set of extreme points and the coefficients of an
+#' objective function
+#' 
+#' @param z
+#' The coefficients of the objective function, including zeros from
+#' slack variables if applicable.
+#' @param ep
+#' A set of extreme points (the output of \code{find.ep()}).
+#' 
+#' @name optimize
+#' @rdname optimize
+#' @export
+minimize <- function(z, ep)
+{
+  optimize_lp(z=z, ep=ep, optfun=min)
+}
+
+
+
+#' @rdname optimize
+#' @export
+maximize <- function(z, ep)
+{
+  optimize_lp(z=z, ep=ep, optfun=max)
+}
+
+
