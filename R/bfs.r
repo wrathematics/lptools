@@ -67,7 +67,9 @@ find.ep <- function(bfs)
     
     inds <- bfs$indices[[ind]]
     
-    if (all(Binv_b >= 0))
+    if (is.character(Binv_b))
+      next
+    else if (all(Binv_b >= 0))
     {
       sol <- rep(0, bfs$n)
       sol[inds] <- Binv_b
@@ -88,8 +90,9 @@ optimize_lp <- function(z, ep, optfun)
   if (class(ep) != "ep")
     stop("Argument 'ep' must be of class 'ep'")
   
-  if (length(z) != length(ep[[1]]))
-    stop("Objective function coefficients 'z' must match the number of coefficients of the ep's")
+  z <- c(z, rep(0, length(ep[[1]])-length(z)))
+#  if (length(z) != length(ep[[1]]))
+#    stop("Objective function coefficients 'z' must match the number of coefficients of the ep's")
   
   if (class(optfun) != "function")
     stop("Argument 'optfun' must be a function of a single variable")
