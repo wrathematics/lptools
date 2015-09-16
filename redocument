@@ -1,4 +1,11 @@
 #!/bin/sh
 
 Rscript -e "roxygen2::roxygenize()"
-Rscript -e "knitr::knit(input='README.Rmd', output='README.md')"
+
+redoreadme=`git diff --name-only README.Rmd`
+readmeredone=`git diff --name-only README.md`
+if test "X$redoreadme" != "X"; then
+  if test "X$readmeredone" = "X"; then
+    Rscript -e "knitr::knit(input='README.Rmd', output='README.md')"
+  fi
+fi
