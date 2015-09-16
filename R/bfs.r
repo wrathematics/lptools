@@ -31,7 +31,7 @@ find.bfs <- function(A, b)
     }
     
     # B^{-1}b
-    bfs[[ind]] <- solve(B) %*% b
+    bfs[[ind]] <- solve(B, b)
     indices[[ind]] <- columns
   }
   
