@@ -112,38 +112,38 @@ latex(ep)
 
 ```
 ## \begin{align*}
-## \bf{x}_1  = \left[\begin{array}{rrrrr}
-## x_1  &x_2  &x_3  &x_4  &x_5  \end{array}\right]^T &=   \left[
+## \bf{x}_1  = \left[\begin{array}{rrrrr}x_1 &x_2 &x_3 &x_4 &x_5 \end{array}\right]^T
+##  &=   \left[
 ## \begin{array}{rrrrr}
 ## 1.333 &0 &3.667 &0 &0 \\
 ## \end{array}\right]^T
 ## \\
-## \bf{x}_2  = \left[\begin{array}{rrrrr}
-## x_1  &x_2  &x_3  &x_4  &x_5  \end{array}\right]^T &=   \left[
+## \bf{x}_2  = \left[\begin{array}{rrrrr}x_1 &x_2 &x_3 &x_4 &x_5 \end{array}\right]^T
+##  &=   \left[
 ## \begin{array}{rrrrr}
 ## 5 &0 &0 &0 &11 \\
 ## \end{array}\right]^T
 ## \\
-## \bf{x}_3  = \left[\begin{array}{rrrrr}
-## x_1  &x_2  &x_3  &x_4  &x_5  \end{array}\right]^T &=   \left[
+## \bf{x}_3  = \left[\begin{array}{rrrrr}x_1 &x_2 &x_3 &x_4 &x_5 \end{array}\right]^T
+##  &=   \left[
 ## \begin{array}{rrrrr}
 ## 0 &4 &1 &0 &0 \\
 ## \end{array}\right]^T
 ## \\
-## \bf{x}_4  = \left[\begin{array}{rrrrr}
-## x_1  &x_2  &x_3  &x_4  &x_5  \end{array}\right]^T &=   \left[
+## \bf{x}_4  = \left[\begin{array}{rrrrr}x_1 &x_2 &x_3 &x_4 &x_5 \end{array}\right]^T
+##  &=   \left[
 ## \begin{array}{rrrrr}
 ## 0 &5 &0 &0 &1 \\
 ## \end{array}\right]^T
 ## \\
-## \bf{x}_5  = \left[\begin{array}{rrrrr}
-## x_1  &x_2  &x_3  &x_4  &x_5  \end{array}\right]^T &=   \left[
+## \bf{x}_5  = \left[\begin{array}{rrrrr}x_1 &x_2 &x_3 &x_4 &x_5 \end{array}\right]^T
+##  &=   \left[
 ## \begin{array}{rrrrr}
 ## 0 &0 &3 &2 &0 \\
 ## \end{array}\right]^T
 ## \\
-## \bf{x}_6  = \left[\begin{array}{rrrrr}
-## x_1  &x_2  &x_3  &x_4  &x_5  \end{array}\right]^T &=   \left[
+## \bf{x}_6  = \left[\begin{array}{rrrrr}x_1 &x_2 &x_3 &x_4 &x_5 \end{array}\right]^T
+##  &=   \left[
 ## \begin{array}{rrrrr}
 ## 0 &0 &0 &5 &6 \\
 ## \end{array}\right]^T

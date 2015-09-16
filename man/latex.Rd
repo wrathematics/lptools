@@ -39,6 +39,9 @@ environment is set up for you.}
 
 \item{asTranspose}{Display as the transpose?}
 
+\item{system}{Logical; is this a system of equations? If so, a pipe is added to
+separate the last column as a right hand side.}
+
 \item{dispname}{Optional display name.}
 
 \item{coordinates}{An integer value from 1 to the length of any ep. Restricts the

@@ -27,6 +27,9 @@ latex <- function(object, ...) UseMethod("latex")
 #' Display as the transpose?
 #' @param dispname
 #' Optional display name.
+#' @param system
+#' Logical; is this a system of equations? If so, a pipe is added to
+#' separate the last column as a right hand side.
 #' 
 #' @examples
 #' x <- matrix(1:25, 5)
