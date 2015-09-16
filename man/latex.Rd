@@ -12,14 +12,15 @@
 latex(object, ...)
 
 \method{latex}{matrix}(object, inline = FALSE, digits = 3,
-  showName = TRUE, asTranspose = FALSE, ..., dispname)
+  showName = TRUE, asTranspose = FALSE, system = FALSE, ..., dispname)
 
 \method{latex}{numeric}(object, inline = FALSE, digits = 3,
   showName = TRUE, asTranspose = FALSE, ...)
 
 \method{latex}{bfs}(object, inline = FALSE, digits = 3, ...)
 
-\method{latex}{ep}(object, inline = FALSE, digits = 3, ...)
+\method{latex}{ep}(object, inline = FALSE, digits = 3, coordinates,
+  xchar = "x", ...)
 
 \method{latex}{lp_solution}(object, digits = 3, ...)
 }
@@ -39,6 +40,12 @@ environment is set up for you.}
 \item{asTranspose}{Display as the transpose?}
 
 \item{dispname}{Optional display name.}
+
+\item{coordinates}{An integer value from 1 to the length of any ep. Restricts the
+display (so you can throw away non-basic variables).  If missing,
+all are displayed.}
+
+\item{xchar}{Character (or string I guess!) to name the solution for display purposes.}
 }
 \description{
 Displaying objects of the appropriate type, typeset in

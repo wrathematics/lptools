@@ -34,14 +34,14 @@ latex <- function(object, ...) UseMethod("latex")
 #' 
 #' @rdname latex
 #' @export
-latex.matrix <- function(object, inline=FALSE, digits=3, showName=TRUE, asTranspose=FALSE, ..., dispname)
+latex.matrix <- function(object, inline=FALSE, digits=3, showName=TRUE, asTranspose=FALSE, system=FALSE, ..., dispname)
 {
-  if (missing(dispname))
+  if (missing(dispname) && showName)
   {
-    if (showName)
-      dispname <- deparse(substitute(object))
-    else
-      dispname <- ""
+    dispname <- deparse(substitute(object))
+    
+    if (system)
+      dispname <- paste0(dispname, "|b")
   }
   else
   {
@@ -52,7 +52,10 @@ latex.matrix <- function(object, inline=FALSE, digits=3, showName=TRUE, asTransp
   if (asTranspose)
     object <- t(object)
   
-  cols <- paste(rep("r", ncol(object)), collapse="")
+  cols <- paste(rep("r", ncol(object)-1), collapse="")
+  if (system)
+    cols <- paste0(cols, "|", collapse="")
+  cols <- paste0(cols, "r", collapse="")
   
   if (!inline)
   {
@@ -79,7 +82,7 @@ latex.matrix <- function(object, inline=FALSE, digits=3, showName=TRUE, asTransp
     cat("\n")
   
   if (!inline)
-    cat("\\end{align*}\n")
+    cat("\\end{align*}")
   
   invisible()
 }
@@ -107,33 +110,63 @@ latex.bfs <- function(object, inline=FALSE, digits=3, ...)
   for (ind in 1:length(object$bfs))
   {
     Binv_b <- object$bfs[[ind]]
+    if (is.character(Binv_b))
+      next
     
     inds <- object$indices[[ind]]
     
     cat(paste0("B^{-1}b = [", paste0("a_", inds, collapse=", "), "]^{-1}b &= "))
-    cat(paste0("[", paste(round(Binv_b, digits=digits), collapse=","), "]^T\\\\\n"))
+    latex(Binv_b, digits=digits, inline=TRUE, showName=FALSE, asTranspose=TRUE)
+    cat("\\\\\n")
+    #cat(paste0("[", paste(round(Binv_b, digits=digits), collapse=" "), "]^T\\\\\n"))
   }
   
   if (!inline)
-    cat("\\end{align*}\n")
+    cat("\\end{align*}")
   
   invisible()
 }
 
 
-
+#' @param coordinates
+#' An integer value from 1 to the length of any ep. Restricts the
+#' display (so you can throw away non-basic variables).  If missing,
+#' all are displayed.
+#' @param xchar
+#' Character (or string I guess!) to name the solution for display purposes.
+#' 
 #' @rdname latex
 #' @export
-latex.ep <- function(object, inline=FALSE, digits=3, ...)
+latex.ep <- function(object, inline=FALSE, digits=3, coordinates, xchar="x", ...)
 {
   if (!inline)
     cat("\\begin{align*}\n")
   
+  if (missing(coordinates))
+    coordinates <- 1:length(object[[1]])
+  else
+    coordinates <- 1:coordinates
+  
+  iter <- 1L
+  
   for(ep in object)
-    cat(paste("&", "[", paste(round(ep, digits=digits), collapse=","), "]^T\\\\\n"))
+  {
+    cat(paste0("\\bf{", xchar, "}_", iter), " = ")
+    iter <- iter + 1L
+    
+    cat(paste0("\\left[\\begin{array}{", paste0(rep("r", length(coordinates)), collapse=""), "}"))
+    xvec <- paste(paste0("x_", coordinates), "&", collapse="")
+    cat(substr(xvec, start=1, stop=nchar(xvec)-1))
+    cat("\\end{array}\\right]^T\n")
+    
+    cat(" &= ") 
+    
+    latex(matrix(ep[coordinates]), showName=FALSE, inline=TRUE, asTranspose=TRUE, digits=digits)
+    cat("\\\\\n")
+  }
   
   if (!inline)
-    cat("\\end{align*}\n")
+    cat("\\end{align*}")
   
   invisible()
 }
