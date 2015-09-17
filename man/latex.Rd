@@ -22,7 +22,7 @@ latex(object, ...)
 \method{latex}{ep}(object, inline = FALSE, digits = 3, coordinates,
   xchar = "x", ...)
 
-\method{latex}{lp_solution}(object, digits = 3, ...)
+\method{latex}{lp_solution}(object, digits = 3, coordinates, ...)
 }
 \arguments{
 \item{object}{Object to print in LaTeX.}

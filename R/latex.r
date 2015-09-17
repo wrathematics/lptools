@@ -178,12 +178,15 @@ latex.ep <- function(object, inline=FALSE, digits=3, coordinates, xchar="x", ...
 
 #' @rdname latex
 #' @export
-latex.lp_solution <- function(object, digits=3, ...)
+latex.lp_solution <- function(object, digits=3, coordinates, ...)
 {
-  cat(paste("So the", object$type, "of the linear programming problem is "))
+  if (missing(coordinates))
+    coordinates <- length(object$soln)
+  
+  cat(paste("the", object$type, "of the linear programming problem is "))
   cat(paste0("$", round(object$optimum, digits=digits), "$, which occurs at point "))
   cat("$")
-  latex(object$soln, inline=TRUE, asTranspose=TRUE, showName=FALSE, digits=digits)
+  latex(object$soln[1:coordinates], inline=TRUE, asTranspose=TRUE, showName=FALSE, digits=digits)
   cat("$")
   
   invisible()
